@@ -9,6 +9,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 @SuppressWarnings("unused")
 public class Herramientas {
+	
+	public void pruebacommit() {
+		
+	}
 	public static String obtener_nombre_de_usuario_loggeado() {//PARA OBTENER EL NOMBRE DEL USUARIO
 		String userName="";
 		try {
