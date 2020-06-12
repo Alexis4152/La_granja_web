@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:security="http://www.springframework.org/schema/security"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans 
+         http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/security 
+         http://www.springframework.org/schema/security/spring-security.xsd">
+
+<security:http auto-config="true" use-expressions="false" disable-url-rewriting="false"><!-- AQUI VAN TODAS LAS URL QUE NO VAN A TENER ACCESO DE MANERA SIMPLE -->
+<!-- VISTAS DEL APLICATIVO -->
+
+<!-- CIERRA SESIÓN ANTES QUE NADA -->
+<security:intercept-url pattern="/Choices" access="ROLE_ADMIN,ROLE_USER"/>
+<!-- CIERRA SESIÓN ANTES QUE NADA -->
+<security:intercept-url pattern="/Memoria" access="ROLE_ADMIN,ROLE_USER"/><!-- MEMORIA DEL SERVIDOR -->
+<!-- CIERRA SESIÓN ANTES QUE NADA -->
+<security:intercept-url pattern="/Aplicativos" access="ROLE_ADMIN,ROLE_USER"/>
+<!-- CIERRA SESIÓN ANTES QUE NADA -->
+<security:intercept-url pattern="/ParametrosVista" access="ROLE_ADMIN,ROLE_USER"/> <!-- PARAMETROS -->
+
+<security:intercept-url pattern="/IndicadorComplementoPagoFact" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/TransformaBibes" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/Transforma" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/CoreCPBatch" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/CargaMasiva" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/Cancelaciones" access="ROLE_ADMIN,ROLE_USER"/>
+
+<security:intercept-url pattern="/Bajar_proceso/" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/Iniciar_proceso/" access="ROLE_ADMIN,ROLE_USER"/>
+
+<security:intercept-url pattern="/StartAll" access="ROLE_ADMIN,ROLE_USER"/>
+<security:intercept-url pattern="/KillAll" access="ROLE_ADMIN,ROLE_USER"/>
+
+
+
+<!-- HACE LA ACCIÓN, LUEGO CIERRA SESIÓN -->
+<security:intercept-url pattern="/NuevoParametro" access="ROLE_ADMIN,ROLE_USER"/> <!-- MENU PRINCIPAL -->
+<security:intercept-url pattern="/EliminarParametro/" access="ROLE_ADMIN,ROLE_USER"/> <!-- MENU PRINCIPAL -->
+<security:intercept-url pattern="/UpdateIndicadorProceso" access="ROLE_ADMIN,ROLE_USER"/> <!-- PARAMETROS -->
+<security:intercept-url pattern="/UpdateRegionesEjecutar" access="ROLE_ADMIN,ROLE_USER"/> <!-- PARAMETROS -->
+
+
+
+
+<!-- VISTAS/ACCIONES QUE NO DEBEN IR EN ESTE ARCHIV SON:-->
+<!-- 1.-CONSULTA SELECT ALL, ERROR: MANDA LA VISTA A LA TABLA LO CUAL NO ESTA BIEN--> 
+<!-- 2.-CONSULTA SELECT LIKE,  NO TIENE ERROR, PERO COMO SU GEMELO DE ARRIBA NO DEBERIA IR TAMPOCO--> 
+<!-- 3.-MandarValorRegionesEjecutar SE COMENTO EN EL ARCHIVO SECURITY CONTEX
+CAUSADA POR VOLVER A EXTRAER EL NOMBRE DE USAURIO QUE NO EXISTE
+SE VALIDO QUE ESTANDO O NO EN EL SPRING SECURITY FILE LANZA LA EXCEPCION
+PORQUE NO EXISTE EL USERNAME DEBIDO A QUE LA SESSION EXPIRO
+--> 
+
+   <form-login login-page="/Login" default-target-url="/Choices"
+   authentication-failure-url="/Login?error=true"/> <!-- RUTA POR DEFAULT CUANDO SE ACCEDE CORRECTAMENTE A LA PAGINA SOLICITADA -->
+   <security:logout invalidate-session="true" delete-cookies="JSESSIONID" logout-success-url="/Logout" logout-url="/j_spring_security_logout"/><!--EL LOGOUT DEL SISTEMA-->
+</security:http>
+<security:authentication-manager>
+<security:authentication-provider>
+<!-- USUARIOS DEFINIDOS MEDIANTE LA BASE DE DATOS-->
+
+
+ <jdbc-user-service data-source-ref="dataSource2"
+ 
+       users-by-username-query="
+         SELECT USERNAME, PASSWORD, CASE HABILITADO WHEN 'Y' THEN 1 ELSE 2 END AS HABILITADO
+         FROM ACCESO_USUARIOS
+         WHERE USERNAME=?" 
+    
+       authorities-by-username-query="
+        SELECT U.USERNAME, R.PERMISO
+        FROM ACCESO_USUARIOS U, PERMISOS_APLICATIVOS R
+        WHERE U.ROLE_USER = R.ID_PERMISO
+        AND U.USERNAME=?"
+   />
+       
+
+</security:authentication-provider>
+</security:authentication-manager>
+
+<!-- 
+
+
+ <security:user-service>
+<security:user name="user" password="password" authorities="ROLE_USER"/>
+<security:user name="admin" password="password" authorities="ROLE_ADMIN"/>
+</security:user-service> 
+          
+   
+-->
+
+
+
+<!-- CODIFICACION DE LA CONTRASEÑA -->
+<b:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+</b:beans>

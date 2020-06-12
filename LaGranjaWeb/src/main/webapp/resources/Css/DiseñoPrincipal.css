@@ -1,0 +1,223 @@
+<style>
+@charset "ISO-8859-1";
+<!-- Atributos principales-->
+/*DISEÑO PARA AGREGAR LOS PARAMETROS*/
+/* Extra styles for the cancel button */
+
+
+/* Center the image and position the close button */
+.container {
+  padding: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 1%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+/*DISEÑO PARA AGREGAR LOS PARAMETROS*/
+","after,":before{ /*AFTER AND BEFORE DE LA EJECUCIÓN DEL SIMBOLO DE CARGA*/
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#contenedor_carga{ /*ESTILO PARA EL CONTENEDOR CARGA*/
+	background-color: rgb(250,240,245,0.9);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	-webkit-transition: all 1s ease;
+	-o-transition: all 1s ease; 
+	transition: all 1s ease;
+	z-index: 10000;
+}
+#carga{/*ESTILO PARA LA CARGA*/
+	border: 15px solid #ccc; 
+	border-top-color: #344DB2; /*F4266A;*/
+	border-top-style: groove;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+","after,":before{ /*AFTER AND BEFORE DE LA EJECUCIÓN DEL SIMBOLO DE CARGA PARA EVENTOS DEL BOTON*/
+	margin:0;
+	padding:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#contenedor_loading{ /*ESTILO PARA EL CONTENEDOR CARGA EN EVENTOS DEL BOTON*/
+	background-color: rgb(250,240,245,0.9);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	-webkit-transition: all 1s ease;
+	-o-transition: all 1s ease; 
+	transition: all 1s ease;
+	z-index: 10000;
+}
+#loading{/*ESTILO PARA LA CARGA EN EVENTOS DEL BOTON*/
+	border: 15px solid #ccc; 
+	border-top-color: #344DB2; /*F4266A;*/
+	border-top-style: groove;
+	height: 100px;
+	width: 100px;
+	border-radius: 100%; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-animation: girar 1.5s linear infinite;
+    animation: girar 1.5s linear infinite;
+}
+@keyframes girar{
+	from{ transform: rotate(0deg);}
+	to{ transform: rotate(360deg);}
+}
+h1,h2{
+	color: black;
+}
+h3,h4{
+color : white;
+}
+h6{
+	float:right;
+}
+#lecturads, #actualizacionuuid, #subprocesonormal, #subprocesoreverso, #subprocesopagos{
+    text-align:center; 
+}
+img{
+     float:right;
+}
+button{
+	color:black;
+}
+#Encabezado{
+	background-color:#23388E;
+}	
+#Pie_de_pagina{
+  background-color:#23388E;
+}	
+p{
+	color: blue; 
+}
+#PICP{
+	width: 25%;
+}
+#acciones{
+	width: 2%;
+}
+#estado{
+	width: 8%;
+}
+#jarname{
+	width: 20%;
+}
+#id_parametro{  
+	width: 4%;
+}
+#clave{
+	width: 5%;
+}
+#valor{
+	width: 5%;
+}
+#accion{
+	width: 2%;
+}
+#dato_para_update{
+	float:left;
+}
+#dato_para_buscar{
+	 float:right;
+}
+#MainMenu{
+	float:right;
+}
+#ParametrosBoton{
+		float:left;
+}
+#kill_all{
+	float:right;
+}
+#start_all{
+	float:right;
+}
+#Nombre_usuario{
+	float:right;
+}
+</style>
