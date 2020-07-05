@@ -22,7 +22,7 @@
    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 </listener>
 <session-config><!-- EL TIEMPO MAXIMO CON LA SESIÓN INACTIVA, DESPUES DE ESTE TIEMPO LA SESIÓN SE INHABILITA -->
-  <session-timeout>1</session-timeout>
+  <session-timeout>20</session-timeout>
 </session-config>
 	<servlet>
 		<servlet-name>spring</servlet-name>

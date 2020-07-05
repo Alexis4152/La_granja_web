@@ -45,7 +45,8 @@ xmlns="http://www.springframework.org/schema/beans">
 
 
  <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName" 
+		<property value="oracle.jdbc.driver.OracleDriver" 
+		name="driverClassName" 
 		/> <property value="jdbc:oracle:thin:@localhost:1521/xe" name="url" /> <property 
 		value="SYSR09" name="username" /> <property value="alex4152" name="password" 
 		/> </bean>
@@ -65,12 +66,12 @@ xmlns="http://www.springframework.org/schema/beans">
 			name="driverClassName" />
 
 		<property
-			value="jdbc:oracle:thin:@ithhpcifppbd-scan2.telcelinstitucional.com:1525/COMPAGODEV"
+			value="jdbc:oracle:thin:@localhost:1521/xe"
 			name="url" />
 
-		<property value="SVADM09" name="username" />
+		<property value="POLLERIA" name="username" />	
 
-		<property value="ConpAG0$9" name="password" />
+		<property value="alex4152" name="password" />
 
 	</bean>
 	<!--<bean id="dataSource3" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 

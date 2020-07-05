@@ -17,6 +17,7 @@ import org.springframework.jdbc.core.simple.ParameterizedRowMapper;
 import mx.telcel.util.Constantes;
 
 public class JdbcParametros implements JdbcDaoParametrosInterface{
+	
 	@Autowired
 	private  DataSource dataSource;//IF NOT EXISTS (SELECT NUM_FACTURA FROM MTE_FACT_SERV)	
 	private  JdbcTemplate jdbcTemplate = new JdbcTemplate();

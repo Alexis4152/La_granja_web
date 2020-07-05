@@ -1,16 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Menu principal</title>
 <link rel="stylesheet"
-	href="<c:url value="/resources/Css/Procesos.css"/>"
-	type="text/css">
+	href="<c:url value="/resources/Css/Procesos.css"/>" type="text/css">
 <link>
 <script lenguaje="JavaScript" type="text/javascript"
 	src="<c:url value="/resources/JavaScript/jquery-3.2.1.js" />"></script>
@@ -18,76 +18,61 @@
 	href="<c:url value="/resources/bootstrap-4.4.1/css/bootstrap.min.css" />"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
 	crossorigin="anonymous">
-<script lenguaje="JavaScript" type="text/javascript"src="<c:url value="/resources/JavaScript/ScriptsCM.js" />"></script>
-<script lenguaje="JavaScript" type="text/javascript"src="<c:url value="/resources/JavaScript/Scripts_status.js" />"></script>
+<script lenguaje="JavaScript" type="text/javascript"
+	src="<c:url value="/resources/bootstrap-4.4.1/js/bootstrap.min.js" />"></script>
+
+<script lenguaje="JavaScript" type="text/javascript"
+	src="<c:url value="/resources/JavaScript/ScriptsCM.js" />"></script>
+<script lenguaje="JavaScript" type="text/javascript"
+	src="<c:url value="/resources/JavaScript/Scripts_status.js" />"></script>
+
 </head>
 <body>
-<!-- PARTE DE LA CARGA DEBE DE IR ANTES DEL BODY -->
-<div id="contenedor_carga">
-<div id="carga" ></div>
-</div>
-<div id="contenedor_loading">
-<div id="loading" ></div>
-</div>
-<!-- PARTE DE LA CARGA DEBE DE IR ANTES DEL BODY -->
-<!-- Este formulario es para abrir los parametros que se encuentran en la base de datos-->
-<!-- Ejemplo en las regiones a ejecutar  -->
+	<!-- PARTE DE LA CARGA DEBE DE IR ANTES DEL BODY -->
+	<!-- Este formulario es para abrir los parametros que se encuentran en la base de datos-->
+	<!-- Ejemplo en las regiones a ejecutar  -->
 
-<div id = "Encabezado" >
-	<img src="<%=request.getContextPath()%>/resources/Images/logo.jpg"></img>
-			<h1 color="white">Portal de Aplicativos Complemento Pago - Menu principal</h1>
-			 <h1> Usuario: <security:authentication property="principal.Username"/></h1>
-<br>
-</div> 
-<div id = "Contenido" class="p-3 mb-2 bg-light text-dark">
-<div id ="Nombre_usuario">
-  <a href="<c:url value='/j_spring_security_logout'/>">Cerrar sesión</a>
-  </div>
-
-<br>
-   <div id="success_process">
-<div class="alert alert-success" role="alert">
-  Bienvenido.
-</div>
-</div>
-<div id="down_process">
-<div class="alert alert-danger" role="alert">
-  Datos de acceso incorrectos.
-</div>
-</div>
-
-<h2>Elige una opción.</h2>
-<br><br>
-<div id="container">
-<div id="Aplicativos">
-<a id="appsredirect" href="<c:url value='Aplicativos'/>"><img src="<%=request.getContextPath()%>/resources/Icons/png/256 px/21.png"></img></a>
-<h5>Aplicativos</h5>
-</div>
-<div id="ParametrosLink">
-<a id="dataredirect" href="<c:url value='ParametrosVista'/>"><img src="<%=request.getContextPath()%>/resources/Icons/png/256 px/11.png"></img></a>
-<h5>Parametros</h5>
-</div>
-</div>
-<div id="MemoriaLink">
-<a id="memoryredirect" href="<c:url value='Memoria'/>"><img src="<%=request.getContextPath()%>/resources/Icons/png/256 px/33.png"></img></a>
-<h5>Memoria</h5>
-</div>
-
-		<br><br><br><br><br><br><br><br><br><br><br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+	<!--  	<img src="<%=request.getContextPath()%>/resources/Images/logo.jpg"></img>-->
 
 
-</div>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand">Polleria La Granja </a>
+			<button class="navbar-toggler" data-target="#menu"
+				data-toggle="collapse" type="button">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="menu">
+				<ul class="navbar-nav mr-auto">
+				
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" data-toggle="dropdown"
+						data-target="desplegable">Productos</a><!-- <------- MENU -->
+						
+						<div class="dropdown-menu">
+						     <a class="dropdown-item">Agregar producto</a><!-- <------- SUBMENU -->
+							 <a class="dropdown-item">Agregar producto externo</a><!-- <------- SUBMENU -->
+						</div>
+				   </li>
+				   
+				   
+					<li class="nav-item active"><a class="nav-link">Ventas</a></li>
+					<li class="nav-item active"><a class="nav-link">Gastos</a></li>
+					<li class="nav-item active"><a class="nav-link" href="<c:url value='Memoria'/>">Corte de caja</a></li>
+					<li class="nav-item active"></li>
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle active" data-toggle="dropdown"
+						data-target="desplegable"> <security:authentication
+								property="principal.Username" /></a><!-- <---- NOMBRE DEL USUARIO / MENU-->
+						<div class="dropdown-menu">
+							<a class="dropdown-item" 
+								href="<c:url value='/j_spring_security_logout'/>">Cerrar
+								sesión</a><!-- SUBMENU -->
+						</div>
+				   </li>
+				</ul>
+			</div>
+		</nav>
+	</div>
 
-<footer>
-<div id="Pie_de_pagina" align=center  class="navbar navbar-fixed-bottom">
-<td><h4>Complemento Pago portal de Aplicativos. Telcel S.A. de C.V.</h4></td>
-</div>
-</footer>
+
 </body>
 </html>

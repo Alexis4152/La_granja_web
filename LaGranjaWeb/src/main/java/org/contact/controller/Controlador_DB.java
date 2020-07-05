@@ -20,14 +20,17 @@ import org.springframework.web.servlet.ModelAndView;
 import mx.telcel.util.Constantes;
 import mx.telcel.util.Herramientas;
 
+@SuppressWarnings("unused")
 @Controller
 public class Controlador_DB {
-	@SuppressWarnings("unused")
+	
 	@Autowired
 	private JdbcServiceUsuariosInterface SERVICIO_USUARIOS;
-	@SuppressWarnings("unused")
+	
+	
 	@Autowired
 	private JdbcServiceParametrosInterface SERVICIO_PARAMETROS;
+	
 	//CAMBIOS
 	//VALIDO CON JDBC
 		@RequestMapping(value = "/UpdateIndicadorProceso", method = RequestMethod.POST)
@@ -39,6 +42,7 @@ public class Controlador_DB {
 			//VALIDADO CON JDBC 
 			@RequestMapping("/ParametrosVista") //ESTA RUTA MUESTRA LOS PARAMETROS POR APLICATIVO A LOS CUALES TIENEN ACCESO
 			public String listregiones(Model modelo){
+				
 					  Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 					  modelo.addAttribute("regiones", new PARAMETROS()); //ENVIA LA CLASE CON LOS PARAMETROS VACIOS PARA QUE EL CAMPO DEL INPUT ESTÉ VACIO  
 					  modelo.addAttribute("regionesestatico", SERVICIO_PARAMETROS.OBTENER_PARAMETROS_PARA_EL_USUARIO_LOGGEADO(Constantes.usuarioparametros.get(0).getPARAMETROS_DISPONIBLES())); //MUESTRA LA LISTA DE PARAMETROS 
@@ -48,6 +52,7 @@ public class Controlador_DB {
 				return "Formularioparametros";
 			}
 			//VALIDADO CON JDBC 
+			@SuppressWarnings({ "unchecked", "rawtypes" })
 			@RequestMapping("/MandarValorRegionesEjecutar/{valor}") // ÉSTA RUTA MANDA EL VALOR SELECCIONADO (ID_PARAMETRO) DE LOS VALORES PROVENIENTES DE LA TABLA PARAMETROS  
 			public String seleccionarunvalor(@PathVariable("valor") int ID_PARAMETRO, Model modelo ){
 				Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
@@ -106,11 +111,12 @@ public class Controlador_DB {
 				return new ModelAndView("/Parametros",model); //CON PARAMETROS SOLO SE REFRESCA LA PARTE DE LA TABLA PARAMETROS MANDANDO LA INFO NUEVA
 			}
 			//VALIDADO CON JDBC
-		    @SuppressWarnings({ "unchecked", "rawtypes" })
+		    @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 			@RequestMapping(value = "/Consulta_SELECT_ALL_PARAMETROS", method = RequestMethod.GET)//A CONSIDERAR POR EL NOMBRE DEL USUARIO Y  LA LISTA DE PARAMETROS A LAS CUALES PODRA TENER ACCESO PERO TENIENDO LA RUTA PRINCIPAL DE LOS PARAMETROS 
 			public ModelAndView SELECT_ALL_REGIONES_EJECUTAR(ModelMap model) {
 		    	Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
-			   ACCESO_USUARIOS parametros_del_usuario = new ACCESO_USUARIOS();
+			   
+			ACCESO_USUARIOS parametros_del_usuario = new ACCESO_USUARIOS();
 			  		  if(Constantes.usuarioparametros.size()!=0) {
 			 		 model.put("regionesestatico",SERVICIO_PARAMETROS.OBTENER_PARAMETROS_PARA_EL_USUARIO_LOGGEADO(Constantes.usuarioparametros.get(0).getPARAMETROS_DISPONIBLES()));
 				    	Constantes.acceso_parametros.clear();			    
