@@ -43,7 +43,7 @@ public class Controlador_DB {
 			@RequestMapping("/ParametrosVista") //ESTA RUTA MUESTRA LOS PARAMETROS POR APLICATIVO A LOS CUALES TIENEN ACCESO
 			public String listregiones(Model modelo){
 				
-					  Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
+					  Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.USUARIO_LOGGEADO());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 					  modelo.addAttribute("regiones", new PARAMETROS()); //ENVIA LA CLASE CON LOS PARAMETROS VACIOS PARA QUE EL CAMPO DEL INPUT ESTÉ VACIO  
 					  modelo.addAttribute("regionesestatico", SERVICIO_PARAMETROS.OBTENER_PARAMETROS_PARA_EL_USUARIO_LOGGEADO(Constantes.usuarioparametros.get(0).getPARAMETROS_DISPONIBLES())); //MUESTRA LA LISTA DE PARAMETROS 
 						Constantes.acceso_parametros.clear();
@@ -55,7 +55,7 @@ public class Controlador_DB {
 			@SuppressWarnings({ "unchecked", "rawtypes" })
 			@RequestMapping("/MandarValorRegionesEjecutar/{valor}") // ÉSTA RUTA MANDA EL VALOR SELECCIONADO (ID_PARAMETRO) DE LOS VALORES PROVENIENTES DE LA TABLA PARAMETROS  
 			public String seleccionarunvalor(@PathVariable("valor") int ID_PARAMETRO, Model modelo ){
-				Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
+				Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.USUARIO_LOGGEADO());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 			    if(Constantes.usuarioparametros.size()!=0) {
 						modelo.addAttribute("regiones", SERVICIO_PARAMETROS.OBTENER_PARAMETRO_DESEADO_PARA_OBJETO_POR_ID_PARAMETRO(ID_PARAMETRO)); //MANDA EL ID_PARAMETRO PARA OBTENER LOS VALORES PARA EL INPUT
 						  modelo.addAttribute("regionesestatico", SERVICIO_PARAMETROS.OBTENER_PARAMETROS_PARA_EL_USUARIO_LOGGEADO(Constantes.usuarioparametros.get(0).getPARAMETROS_DISPONIBLES()));//MANDA NUEVAMENTE LA CONSULTA GENERAL DE TODA LA TABLA PARAMETROS
@@ -87,8 +87,8 @@ public class Controlador_DB {
 		    @SuppressWarnings({ "unchecked", "rawtypes" })
 			@RequestMapping(value = "/ConsultaLikePARAMETROS/{key}", method = RequestMethod.GET)//A CONSIDERAR POR EL NOMBRE DEL USUARIO LA LISTA DE PARAMETROS A LAS CUALES PODRA TENER ACCESO
 			public ModelAndView LIKE_REGIONES_EJECUTAR(@PathVariable("key") String valor, ModelMap model) {
-		    	Herramientas.obtener_nombre_de_usuario_loggeado();
-				Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
+		    	Herramientas.USUARIO_LOGGEADO();
+				Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.USUARIO_LOGGEADO());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 			    // CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 			  
 			   if(Constantes.usuarioparametros.size()!=0){
@@ -114,7 +114,7 @@ public class Controlador_DB {
 		    @SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 			@RequestMapping(value = "/Consulta_SELECT_ALL_PARAMETROS", method = RequestMethod.GET)//A CONSIDERAR POR EL NOMBRE DEL USUARIO Y  LA LISTA DE PARAMETROS A LAS CUALES PODRA TENER ACCESO PERO TENIENDO LA RUTA PRINCIPAL DE LOS PARAMETROS 
 			public ModelAndView SELECT_ALL_REGIONES_EJECUTAR(ModelMap model) {
-		    	Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.obtener_nombre_de_usuario_loggeado());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
+		    	Constantes.usuarioparametros = SERVICIO_USUARIOS.OBTENERLISTA_PARAMETROS_POR_EL_NOMBRE_DE_USUARIO(Herramientas.USUARIO_LOGGEADO());// CON EL OBJETO PREVIO SE GUARDA EL RESULTADO DE LA CONSULTA AL MANDARLE EL NOMBRE DE USUARIO 
 			   
 			ACCESO_USUARIOS parametros_del_usuario = new ACCESO_USUARIOS();
 			  		  if(Constantes.usuarioparametros.size()!=0) {

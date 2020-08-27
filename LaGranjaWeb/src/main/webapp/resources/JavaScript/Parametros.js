@@ -3,6 +3,8 @@
  * CAMBIOS QUE SE LE HAGAN AL ARCHIVO .JS
  */
 $(document).ready(function(){//INICIO DEL SCRIPT - TOMA LA PRIMER PARTE DEL EVENTO QUE ES DETECTAR LO QUE SE ESTA ESCRIBIENDO EN EL INPUT
+	
+	
 	$('#Boton_guardar').prop('disabled',true);
 	
 	function COMPROBAR_SI_YA_SE_PUEDE_ACTIVAR_EL_BOTON_ADD(){

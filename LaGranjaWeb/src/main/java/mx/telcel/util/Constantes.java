@@ -4,16 +4,32 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.contact.model.ACCESO_USUARIOS;
+import org.contact.model.DESCRIPCION_DE_VENTA;
 import org.contact.model.PARAMETROS;
+import org.contact.model.PRODUCTOS;
+import org.contact.model.VENTA;
 
 @SuppressWarnings("unchecked")
 public class Constantes {
 	@SuppressWarnings("rawtypes")
+	//Pollito
+	public static List<DESCRIPCION_DE_VENTA> PRODUCTOS_ACTUALMENTE_EN_VENTA=new ArrayList();
+	public static List<PRODUCTOS> PRODUCTOS=new ArrayList();
+	//PRODUCTOS POR GRUPOS
+	public static List<PRODUCTOS> POLLO_ENTERO=new ArrayList();
+	public static List<PRODUCTOS> MEDIO_POLLO=new ArrayList();
+	public static List<PRODUCTOS> PIERNA_COMPLETA=new ArrayList();
+	public static List<PRODUCTOS> HUACAL_COMPLETO=new ArrayList();
+	//PRODUCTOS POR GRUPOS
+	public static String bandera = "";
+	public static float TOTAL_DE_VENTA=0;
+	
+	
 	public static List<ACCESO_USUARIOS> usuarioparametros=new ArrayList();
 	public static List<PARAMETROS> PARAMETROELEGIDO= new ArrayList();
 	public static String procesos_abajo="";
 	public static String procesos_arriba="";
-	public static String bandera = "";
+	
 	public static String banderaactivo = "";
 	public static ArrayList<Integer> acceso_parametros = new ArrayList<Integer>();
 	public static ArrayList<Integer> acceso_parametros_consulta_like = new ArrayList<Integer>();

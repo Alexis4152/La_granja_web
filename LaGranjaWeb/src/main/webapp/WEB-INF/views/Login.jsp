@@ -32,27 +32,11 @@
 <!-- Ejemplo en las regiones a ejecutar  -->
 
 <div id = "Encabezado" >
-	<img src="<%=request.getContextPath()%>/resources/Images/logo.jpg"></img>
-			<h1 color="white">Portal de Aplicativos Complemento Pago</h1>
+			<h1 color="white">Pollería la granja</h1>
 <br>
 </div> 
 <div id = "Contenido" class="p-3 mb-2 bg-light text-dark">
 
-<div id="success_process">
-<div class="alert alert-success" role="alert">
-  Bienvenido.
-</div>
-</div>
-<div id="already_active">
-<div class="alert alert-primary" role="alert">
-  No deje datos vacios
-</div>
-</div>
-<div id="down_process">
-<div class="alert alert-danger" role="alert">
-  Datos de acceso incorrectos.
-</div>
-</div>
  <div class="container">
          
     <div class="row">
@@ -91,7 +75,7 @@
   </div>
 <footer>
 <div id="Pie_de_pagina" align=center  class="navbar navbar-fixed-bottom">
-<td><h4>Complemento Pago portal de Aplicativos. Telcel S.A. de C.V.</h4></td>
+<td><h4>Pollería la Granja S.A. de C.V.</h4></td>
 </div>
 </footer>
 </body>

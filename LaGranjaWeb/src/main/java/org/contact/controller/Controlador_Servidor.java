@@ -42,17 +42,7 @@ import mx.telcel.util.Herramientas;
 @SuppressWarnings("unused")
 @Controller
 public class Controlador_Servidor{
-	//INTERFACE
-	//SERVICIO
-	//CLASE DE IMPLEMENTACIÓN
-	//DAO
-	//DATA
-	//ACCESS
-	//OBJECT
-	
-	
-	
-	
+
 	@Autowired
 	private JdbcServiceUsuariosInterface SERVICIO_USUARIOS;
 	@Autowired
@@ -64,7 +54,7 @@ public class Controlador_Servidor{
 	}
 	
 	@SuppressWarnings("static-access")
-	@RequestMapping(value = "/Choices")
+	@RequestMapping(value = "/Menu principal")
 	public String Options() {
 	return "Opciones";
 	}
