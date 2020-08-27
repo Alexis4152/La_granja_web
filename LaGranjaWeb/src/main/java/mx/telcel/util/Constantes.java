@@ -24,7 +24,6 @@ public class Constantes {
 	public static String bandera = "";
 	public static float TOTAL_DE_VENTA=0;
 	
-	
 	public static List<ACCESO_USUARIOS> usuarioparametros=new ArrayList();
 	public static List<PARAMETROS> PARAMETROELEGIDO= new ArrayList();
 	public static String procesos_abajo="";
