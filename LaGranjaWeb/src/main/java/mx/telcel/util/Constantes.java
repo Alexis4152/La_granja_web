@@ -13,6 +13,7 @@ import org.contact.model.VENTA;
 public class Constantes {
 	@SuppressWarnings("rawtypes")
 	//Pollito
+	//HOAL
 	public static List<DESCRIPCION_DE_VENTA> PRODUCTOS_ACTUALMENTE_EN_VENTA=new ArrayList();
 	public static List<PRODUCTOS> PRODUCTOS=new ArrayList();
 	//PRODUCTOS POR GRUPOS
